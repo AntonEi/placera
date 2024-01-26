@@ -17,8 +17,11 @@ def get_stock_preference():
     Welcome message and user instructions.
     Get information to assist in finding your next stock.
     """
+    # Welcome message
     print("Greetings! You've just stepped into the world of StockTrigger,")
     print("your gateway to discovering your next promising stock.\n")
+    
+    # Enter name
     while True:
         user_name = input("Please enter your name: ")
 
@@ -27,16 +30,34 @@ def get_stock_preference():
             break
         else:
             print("Invalid name. Please enter a name containing only letters. Please try again.\n")
-
+    
+    # Choose what category you want.
     while True:
         data_str = input("Please enter your preference (Tech, Medical, or Takeover): ")
         if data_str.lower() in ['tech', 'medical', 'takeover']:
-            print(f"Thank you for providing your preference: {data_str.capitalize()}")
+            print(f"Thank you for providing your preference: {data_str.capitalize()}\n")
+
+            # Navigate to the proper preferens thats been called
+            if data_str.lower() == 'tech':
+                explore_tech_options()
+            elif data_str.lower() == 'medical':
+                explore_medical_options()
+            elif data_str.lower() == 'takeover':
+                explore_takeover_options()
+
             break
         else:
             print("Invalid preference. Please enter Tech, Medical, or Takeover. Please try again.\n")
 
-# Call the function
-get_stock_preference()
+def explore_tech_options():
+    """
+    Explore additional options in the Tech category.
+    """
+    print("Exploring Tech options:")
+    print("1. Artificial Intelligence")
+    print("2. Cloud Computing")
+    print("3. Cybersecurity\n")
 
+
+get_stock_preference()
 
