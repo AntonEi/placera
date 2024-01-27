@@ -26,7 +26,7 @@ def explore_tech_options():
     print("[6] Industry Awards\n")
     print("[0] Exit program")
 
-    
+    ## Option field
     option = int(input("Enter your option: "))
 
     while option != 0:
@@ -50,7 +50,44 @@ def explore_tech_options():
         explore_tech_options()
         option = int(input("Enter your option: "))
 
+def explore_medical_options():
+    """
+    Explore additional options in the Medical category.
+    Display a menu for Tech option, asking the user to choose an option
+    """
+    print("Choose a keyword to explore Medical options:")
+    print("[1] FDA approval")
+    print("[2] Fas 1")
+    print("[3] Fas 2")
+    print("[4] Fas 3")
+    print("[5] EMA approval")
+    print("[6] Product Launches\n")
+    print("[0] Exit program")
 
+    ## Option field
+    option = int(input("Enter your option: "))
+
+    while option != 0:
+        if option == 1:
+            print('FDA approval')
+        elif option == 2:
+            print('Fas 1')
+        elif option == 3:
+            print('Fas 2')
+        elif option == 4:
+            print('Fas 3')
+        elif option == 5:
+            print('EMA approval')
+        elif option == 6:
+            print('Product Launches')
+        else:
+            print("Invalid option.")
+            explore_tech_options()
+        
+        print("thanks")
+        explore_tech_options()
+        option = int(input("Enter your option: "))
+        
 def get_stock_preference():
     """
     Welcome message and user instructions.
