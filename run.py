@@ -87,7 +87,45 @@ def explore_medical_options():
         print("thanks")
         explore_tech_options()
         option = int(input("Enter your option: "))
+
+def explore_takeover_options():
+    """
+    Explore additional options in the Takeover category.
+    Display a menu for Tech option, asking the user to choose an option
+    """
+    print("Choose a keyword to explore Takeover options:")
+    print("[1] Merger")
+    print("[2] Takeover")
+    print("[3] Acquisition")
+    print("[4] Letter of Intent")
+    print("[5] Buyout")
+    print("[6] Hostile Takeover\n")
+    print("[0] Exit program")
+
+    ## Option field
+    option = int(input("Enter your option: "))
+
+    while option != 0:
+        if option == 1:
+            print('Merger')
+        elif option == 2:
+            print('Takeover')
+        elif option == 3:
+            print('Acquisition')
+        elif option == 4:
+            print('Letter of Intent')
+        elif option == 5:
+            print('Buyout')
+        elif option == 6:
+            print('Hostile Takeover')
+        else:
+            print("Invalid option.")
+            explore_tech_options()
         
+        print("thanks")
+        explore_tech_options()
+        option = int(input("Enter your option: "))
+
 def get_stock_preference():
     """
     Welcome message and user instructions.
