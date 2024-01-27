@@ -12,6 +12,45 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('placera')
 
+def explore_tech_options():
+    """
+    Explore additional options in the Tech category.
+    Display a menu for Tech option, asking the user to choose an option
+    """
+    print("Choose a keyword to explore Tech options:")
+    print("[1] Partnerships")
+    print("[2] Market Expansion")
+    print("[3] Product Launch")
+    print("[4] Stock Buyback Program")
+    print("[5] Supply Chain  Updates")
+    print("[6] Industry Awards\n")
+    print("[0] Exit program")
+
+    
+    option = int(input("Enter your option: "))
+
+    while option != 0:
+        if option == 1:
+            print('Partnerships')
+        elif option == 2:
+            print('Market Expansion')
+        elif option == 3:
+            print('Product Launch')
+        elif option == 4:
+            print('Stock Buyback Program')
+        elif option == 5:
+            print('Supply Chain  Updates')
+        elif option == 6:
+            print('Industry Awards')
+        else:
+            print("Invalid option.")
+            explore_tech_options()
+        
+        print("thanks")
+        explore_tech_options()
+        option = int(input("Enter your option: "))
+
+
 def get_stock_preference():
     """
     Welcome message and user instructions.
@@ -49,14 +88,6 @@ def get_stock_preference():
         else:
             print("Invalid preference. Please enter Tech, Medical, or Takeover. Please try again.\n")
 
-def explore_tech_options():
-    """
-    Explore additional options in the Tech category.
-    """
-    print("Exploring Tech options:")
-    print("1. Artificial Intelligence")
-    print("2. Cloud Computing")
-    print("3. Cybersecurity\n")
 
 
 get_stock_preference()
