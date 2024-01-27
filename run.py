@@ -12,6 +12,17 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('placera')
 
+def target_keyword(data):
+    """
+    Search through the rows of data and print those containing the specified keyword.
+    Case-insensitive search is performed to match the keyword within the row.
+    """
+    for row in data:
+        if search_word.lower() in ' '.join(row).lower():
+            print(row)
+
+
+
 def explore_tech_options():
     """
     Explore additional options in the Tech category.
@@ -76,22 +87,27 @@ def explore_medical_options():
     while option != 0:
         if option == 1:
             print('FDA approval')
+            print(datamedical[0])
         elif option == 2:
             print('Fas 1')
+            print(datamedical[1])
         elif option == 3:
             print('Fas 2')
+            print(datamedical[2])
         elif option == 4:
             print('Fas 3')
+            print(datamedical[3])
         elif option == 5:
             print('EMA approval')
+            print(datamedical[4])
         elif option == 6:
-            print('Product Launches')
+            print('Product Launch')
+            print(datamedical[5])
         else:
             print("Invalid option.")
-            explore_tech_options()
+            explore_medical_options()
         
         print("thanks")
-        explore_tech_options()
         option = int(input("Enter your option: "))
 
 def explore_takeover_options():
@@ -114,22 +130,27 @@ def explore_takeover_options():
     while option != 0:
         if option == 1:
             print('Merger')
+            print(datatakeover[0])
         elif option == 2:
             print('Takeover')
+            print(datatakeover[1])
         elif option == 3:
             print('Acquisition')
+            print(datatakeover[2])
         elif option == 4:
             print('Letter of Intent')
+            print(datatakeover[3])
         elif option == 5:
             print('Buyout')
+            print(datatakeover[4])
         elif option == 6:
             print('Hostile Takeover')
+            print(datatakeover[5])
         else:
             print("Invalid option.")
-            explore_tech_options()
+            explore_takeover_options()
         
         print("thanks")
-        explore_tech_options()
         option = int(input("Enter your option: "))
 
 def get_stock_preference():
@@ -171,6 +192,10 @@ def get_stock_preference():
 
 tech = SHEET.worksheet('tech')
 datatech = tech.get_all_values()
+medical = SHEET.worksheet('medical')
+datamedical = medical.get_all_values()
+takeover = SHEET.worksheet('takeover')
+datatakeover = takeover.get_all_values()
 
 get_stock_preference()
 
