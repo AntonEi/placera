@@ -31,23 +31,29 @@ def explore_tech_options():
 
     while option != 0:
         if option == 1:
-            print('Partnerships')
+            print('Partnerships\n')
+            print(datatech[0])
+            print( )
         elif option == 2:
-            print('Market Expansion')
+            print('Market Expansion\n')
+            print(datatech[1])
         elif option == 3:
-            print('Product Launch')
+            print('Product Launch\n')
+            print(datatech[2])
         elif option == 4:
-            print('Stock Buyback Program')
+            print('Stock Buyback Program\n')
+            print(datatech[3])
         elif option == 5:
-            print('Supply Chain  Updates')
+            print('Supply Chain  Updates\n')
+            print(datatech[4])
         elif option == 6:
-            print('Industry Awards')
+            print('Industry Awards\n')
+            print(datatech[5])
         else:
             print("Invalid option.")
             explore_tech_options()
         
         print("thanks")
-        explore_tech_options()
         option = int(input("Enter your option: "))
 
 def explore_medical_options():
@@ -163,7 +169,8 @@ def get_stock_preference():
         else:
             print("Invalid preference. Please enter Tech, Medical, or Takeover. Please try again.\n")
 
-
+tech = SHEET.worksheet('tech')
+datatech = tech.get_all_values()
 
 get_stock_preference()
 
