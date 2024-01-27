@@ -12,22 +12,23 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('placera')
 
-def target_keyword(data):
-    """
-    Search through the rows of data and print those containing the specified keyword.
-    Case-insensitive search is performed to match the keyword within the row.
-    """
-    for row in data:
-        if search_word.lower() in ' '.join(row).lower():
-            print(row)
 
-
+def validate_stock_preference(valid_choices):
+    option_is_valid = False
+    while option_is_valid is False:
+        option = input("Enter your option: ")
+        option_is_valid = option in valid_choices
+        if option_is_valid is False:
+            print('Please enter a valid option')
+    return int(option)
 
 def explore_tech_options():
     """
     Explore additional options in the Tech category.
     Display a menu for Tech option, asking the user to choose an option
     """
+    keyword_list = ["Partnerships", "Market Expansion", "Product Launch", "Stock Buyback Program",
+                    "Supply Chain  Updates", "Industry Awards"]
     print("Choose a keyword to explore Tech options:")
     print("[1] Partnerships")
     print("[2] Market Expansion")
@@ -35,37 +36,23 @@ def explore_tech_options():
     print("[4] Stock Buyback Program")
     print("[5] Supply Chain  Updates")
     print("[6] Industry Awards\n")
+    print("[10] Back to Category")
     print("[0] Exit program")
 
     ## Option field
-    option = int(input("Enter your option: "))
-
+    option = validate_stock_preference(['1', '2', '3', '4', '5', '6'
+                                        '10', '0'])
     while option != 0:
-        if option == 1:
-            print('Partnerships\n')
-            print(datatech[0])
-            print( )
-        elif option == 2:
-            print('Market Expansion\n')
-            print(datatech[1])
-        elif option == 3:
-            print('Product Launch\n')
-            print(datatech[2])
-        elif option == 4:
-            print('Stock Buyback Program\n')
-            print(datatech[3])
-        elif option == 5:
-            print('Supply Chain  Updates\n')
-            print(datatech[4])
-        elif option == 6:
-            print('Industry Awards\n')
-            print(datatech[5])
+        if option < 10:
+            keyword_index = option - 1
+            selected_keyword = keyword_list[keyword_index]
+            print(f'\nkey word: "{selected_keyword}"')
+            find_stories_by_keyword(selected_keyword, datatech)
         else:
-            print("Invalid option.")
-            explore_tech_options()
-        
-        print("thanks")
-        option = int(input("Enter your option: "))
+            print('Back to Category...\n')
+            get_stock_preference()
+            break
+        option = int(input("Enter another option: "))
 
 def explore_medical_options():
     """
@@ -79,6 +66,7 @@ def explore_medical_options():
     print("[4] Fas 3")
     print("[5] EMA approval")
     print("[6] Product Launches\n")
+    print("[10] Back to Category")
     print("[0] Exit program")
 
     ## Option field
@@ -86,29 +74,39 @@ def explore_medical_options():
 
     while option != 0:
         if option == 1:
-            print('FDA approval')
+            print('\nkey word: "FDA approval"')
             print(datamedical[0])
+            print( )
         elif option == 2:
-            print('Fas 1')
+            print('\nkey word: "Fas 1"')
             print(datamedical[1])
+            print( )
         elif option == 3:
-            print('Fas 2')
+            print('\nkey word: "Fas 2"')
             print(datamedical[2])
+            print( )
         elif option == 4:
-            print('Fas 3')
+            print('\nkey word: "Fas 3"')
             print(datamedical[3])
+            print( )
         elif option == 5:
-            print('EMA approval')
+            print('\nkey word: "EMA approval"')
             print(datamedical[4])
+            print( )
         elif option == 6:
-            print('Product Launch')
+            print('\nkey word: "Product Launch"')
             print(datamedical[5])
+            print( )
+        # Option to go back to Category
+        elif option == 10:
+            print('Back to Category...\n')
+            get_stock_preference()
+            break
         else:
             print("Invalid option.")
             explore_medical_options()
         
-        print("thanks")
-        option = int(input("Enter your option: "))
+        option = int(input("Enter another option: "))
 
 def explore_takeover_options():
     """
@@ -122,6 +120,7 @@ def explore_takeover_options():
     print("[4] Letter of Intent")
     print("[5] Buyout")
     print("[6] Hostile Takeover\n")
+    print("[10] Back to Category")
     print("[0] Exit program")
 
     ## Option field
@@ -129,40 +128,47 @@ def explore_takeover_options():
 
     while option != 0:
         if option == 1:
-            print('Merger')
+            print('\nkey word: "Merger"')
             print(datatakeover[0])
+            print( )
         elif option == 2:
-            print('Takeover')
+            print('\nkey word: "Takeover"')
             print(datatakeover[1])
+            print( )
         elif option == 3:
-            print('Acquisition')
+            print('\nkey word: "Acquisition"')
             print(datatakeover[2])
+            print( )
         elif option == 4:
-            print('Letter of Intent')
+            print('\nkey word: "Letter of Intent"')
             print(datatakeover[3])
+            print( )
         elif option == 5:
-            print('Buyout')
+            print('\nkey word: "Buyout"')
             print(datatakeover[4])
+            print( )
         elif option == 6:
-            print('Hostile Takeover')
+            print('\nkey word: "Hostile Takeover"')
             print(datatakeover[5])
+            print( )
+        # Option to go back to Category
+        elif option == 10:
+            print('Back to Category...\n')
+            get_stock_preference()
+            break
         else:
             print("Invalid option.")
             explore_takeover_options()
         
-        print("thanks")
-        option = int(input("Enter your option: "))
 
-def get_stock_preference():
-    """
-    Welcome message and user instructions.
-    Get information to assist in finding your next stock.
-    """
-    # Welcome message
+        
+        option = int(input("Enter another option: "))
+
+def enter_name():
+     # Welcome message
     print("Greetings! You've just stepped into the world of StockTrigger,")
     print("your gateway to discovering your next promising stock.\n")
-    
-    # Enter name
+        # Enter name
     while True:
         user_name = input("Please enter your name: ")
 
@@ -172,6 +178,11 @@ def get_stock_preference():
         else:
             print("Invalid name. Please enter a name containing only letters. Please try again.\n")
     
+def get_stock_preference():
+    """
+    Welcome message and user instructions.
+    Get information to assist in finding your next stock.
+    """
     # Choose what category you want.
     while True:
         data_str = input("Please enter your preference (Tech, Medical, or Takeover): ")
@@ -190,6 +201,16 @@ def get_stock_preference():
         else:
             print("Invalid preference. Please enter Tech, Medical, or Takeover. Please try again.\n")
 
+def find_stories_by_keyword(keyword, data_sheet):
+    found_list = []
+    for story in data_sheet:
+        if keyword.lower() in story[1] or keyword.upper() in story[1] or keyword in story[1]:
+            found_list.append(story)
+    print(f'We found {len(found_list)} stories matching your keyword: ')
+    for story in found_list:
+        print(story)
+
+
 tech = SHEET.worksheet('tech')
 datatech = tech.get_all_values()
 medical = SHEET.worksheet('medical')
@@ -197,5 +218,9 @@ datamedical = medical.get_all_values()
 takeover = SHEET.worksheet('takeover')
 datatakeover = takeover.get_all_values()
 
-get_stock_preference()
 
+def main():
+    enter_name()
+    get_stock_preference()
+    
+main()
