@@ -91,6 +91,8 @@ def explore_takeover_options():
     Explore additional options in the Takeover category.
     Display a menu for Tech option, asking the user to choose an option
     """
+    keyword_list = ["Merger", "Takeover", "Acquisition", "Letter of Intent",
+            "Buyout", "Hostile Takeover"]
     print("Choose a keyword to explore Takeover options:")
     print("[1] Merger")
     print("[2] Takeover")
@@ -102,44 +104,18 @@ def explore_takeover_options():
     print("[0] Exit program")
 
     ## Option field
-    option = int(input("Enter your option: "))
-
+   option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
+                                        '10', '0'])
     while option != 0:
-        if option == 1:
-            print('\nkey word: "Merger"')
-            print(datatakeover[0])
-            print( )
-        elif option == 2:
-            print('\nkey word: "Takeover"')
-            print(datatakeover[1])
-            print( )
-        elif option == 3:
-            print('\nkey word: "Acquisition"')
-            print(datatakeover[2])
-            print( )
-        elif option == 4:
-            print('\nkey word: "Letter of Intent"')
-            print(datatakeover[3])
-            print( )
-        elif option == 5:
-            print('\nkey word: "Buyout"')
-            print(datatakeover[4])
-            print( )
-        elif option == 6:
-            print('\nkey word: "Hostile Takeover"')
-            print(datatakeover[5])
-            print( )
-        # Option to go back to Category
-        elif option == 10:
+        if option < 10:
+            keyword_index = option - 1
+            selected_keyword = keyword_list[keyword_index]
+            print(f'\nkey word: "{selected_keyword}"')
+            find_stories_by_keyword(selected_keyword, datamedical)
+        else:
             print('Back to Category...\n')
             get_stock_preference()
             break
-        else:
-            print("Invalid option.")
-            explore_takeover_options()
-        
-
-        
         option = int(input("Enter another option: "))
 
 def enter_name():
