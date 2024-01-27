@@ -40,7 +40,7 @@ def explore_tech_options():
     print("[0] Exit program")
 
     ## Option field
-    option = validate_stock_preference(['1', '2', '3', '4', '5', '6'
+    option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                         '10', '0'])
     while option != 0:
         if option < 10:
@@ -59,6 +59,8 @@ def explore_medical_options():
     Explore additional options in the Medical category.
     Display a menu for Tech option, asking the user to choose an option
     """
+    keyword_list = ["FDA approval", "Fas 1", "Fas 2", "Fas 3",
+                "EMA approval", "Product Launches"]
     print("Choose a keyword to explore Medical options:")
     print("[1] FDA approval")
     print("[2] Fas 1")
@@ -70,42 +72,18 @@ def explore_medical_options():
     print("[0] Exit program")
 
     ## Option field
-    option = int(input("Enter your option: "))
-
+    option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
+                                        '10', '0'])
     while option != 0:
-        if option == 1:
-            print('\nkey word: "FDA approval"')
-            print(datamedical[0])
-            print( )
-        elif option == 2:
-            print('\nkey word: "Fas 1"')
-            print(datamedical[1])
-            print( )
-        elif option == 3:
-            print('\nkey word: "Fas 2"')
-            print(datamedical[2])
-            print( )
-        elif option == 4:
-            print('\nkey word: "Fas 3"')
-            print(datamedical[3])
-            print( )
-        elif option == 5:
-            print('\nkey word: "EMA approval"')
-            print(datamedical[4])
-            print( )
-        elif option == 6:
-            print('\nkey word: "Product Launch"')
-            print(datamedical[5])
-            print( )
-        # Option to go back to Category
-        elif option == 10:
+        if option < 10:
+            keyword_index = option - 1
+            selected_keyword = keyword_list[keyword_index]
+            print(f'\nkey word: "{selected_keyword}"')
+            find_stories_by_keyword(selected_keyword, datamedical)
+        else:
             print('Back to Category...\n')
             get_stock_preference()
             break
-        else:
-            print("Invalid option.")
-            explore_medical_options()
-        
         option = int(input("Enter another option: "))
 
 def explore_takeover_options():
