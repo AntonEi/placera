@@ -1,5 +1,5 @@
 import gspread
-from google.oauth2.service_account import Credentials 
+from google.oauth2.service_account import Credentials
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -22,13 +22,15 @@ def validate_stock_preference(valid_choices):
             print('Please enter a valid option')
     return int(option)
 
+
 def explore_tech_options():
     """
     Explore additional options in the Tech category.
     Display a menu for Tech option, asking the user to choose an option
     """
-    keyword_list = ["Partnerships", "Market Expansion", "Product Launch", "Stock Buyback Program",
-                    "Supply Chain  Updates", "Industry Awards"]
+    keyword_list = ["Partnerships", "Market Expansion", "Product Launch",
+                    " Stock Buyback Program", "Supply Chain  Updates",
+                    " Industry Awards"]
     print("Choose a keyword to explore Tech options:")
     print("[1] Partnerships")
     print("[2] Market Expansion")
@@ -39,9 +41,13 @@ def explore_tech_options():
     print("[10] Back to Category")
     print("[0] Exit program")
 
-    ## Option field
+    # Option field
     option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                         '10', '0'])
+    if option == 0:
+        print("Exiting program...")
+        return
+
     while option != 0:
         if option < 10:
             keyword_index = option - 1
@@ -54,13 +60,14 @@ def explore_tech_options():
             break
         option = int(input("Enter another option: "))
 
+
 def explore_medical_options():
     """
     Explore additional options in the Medical category.
     Display a menu for Tech option, asking the user to choose an option
     """
     keyword_list = ["FDA approval", "Fas 1", "Fas 2", "Fas 3",
-                "EMA approval", "Product Launches"]
+                    " EMA approval", "Product Launches"]
     print("Choose a keyword to explore Medical options:")
     print("[1] FDA approval")
     print("[2] Fas 1")
@@ -71,9 +78,13 @@ def explore_medical_options():
     print("[10] Back to Category")
     print("[0] Exit program")
 
-    ## Option field
+    # Option field
     option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                         '10', '0'])
+    if option == 0:
+        print("Exiting program...")
+        return
+
     while option != 0:
         if option < 10:
             keyword_index = option - 1
@@ -86,13 +97,14 @@ def explore_medical_options():
             break
         option = int(input("Enter another option: "))
 
+
 def explore_takeover_options():
     """
     Explore additional options in the Takeover category.
     Display a menu for Tech option, asking the user to choose an option
     """
     keyword_list = ["Merger", "Takeover", "Acquisition", "Letter of Intent",
-            "Buyout", "Hostile Takeover"]
+                    "Buyout", "Hostile Takeover"]
     print("Choose a keyword to explore Takeover options:")
     print("[1] Merger")
     print("[2] Takeover")
@@ -103,35 +115,43 @@ def explore_takeover_options():
     print("[10] Back to Category")
     print("[0] Exit program")
 
-    ## Option field
-   option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
+    # Option field
+    option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                         '10', '0'])
+    if option == 0:
+        print("Exiting program...")
+        return
+
     while option != 0:
         if option < 10:
             keyword_index = option - 1
             selected_keyword = keyword_list[keyword_index]
             print(f'\nkey word: "{selected_keyword}"')
-            find_stories_by_keyword(selected_keyword, datamedical)
+            find_stories_by_keyword(selected_keyword, datatakeover)
         else:
             print('Back to Category...\n')
             get_stock_preference()
             break
         option = int(input("Enter another option: "))
 
+
 def enter_name():
-     # Welcome message
+    # Welcome message
     print("Greetings! You've just stepped into the world of StockTrigger,")
     print("your gateway to discovering your next promising stock.\n")
-        # Enter name
+    # Enter name
     while True:
         user_name = input("Please enter your name: ")
 
         if user_name.isalpha():
-            print(f"Welcome, {user_name}! Let's get you started in finding your next stock.\n")
+            print(f"Welcome, {user_name}! Let's get you started in finding"
+                  " your next stock.\n")
             break
         else:
-            print("Invalid name. Please enter a name containing only letters. Please try again.\n")
-    
+            print("Invalid name. Please enter a name containing only letters."
+                  " Please try again.\n")
+
+
 def get_stock_preference():
     """
     Welcome message and user instructions.
@@ -139,9 +159,11 @@ def get_stock_preference():
     """
     # Choose what category you want.
     while True:
-        data_str = input("Please enter your preference (Tech, Medical, or Takeover): ")
+        data_str = input("Please enter your preference"
+                         "(Tech, Medical, or Takeover): ")
         if data_str.lower() in ['tech', 'medical', 'takeover']:
-            print(f"Thank you for providing your preference: {data_str.capitalize()}\n")
+            print(f"Thank you for providing your preference:"
+                  f" {data_str.capitalize()}\n")
 
             # Navigate to the proper preferens thats been called
             if data_str.lower() == 'tech':
@@ -153,12 +175,18 @@ def get_stock_preference():
 
             break
         else:
-            print("Invalid preference. Please enter Tech, Medical, or Takeover. Please try again.\n")
+            print("Invalid preference. Please enter Tech, Medical,"
+                  " or Takeover. Please try again.\n")
+
 
 def find_stories_by_keyword(keyword, data_sheet):
     found_list = []
     for story in data_sheet:
-        if keyword.lower() in story[1] or keyword.upper() in story[1] or keyword in story[1]:
+        if (
+            keyword.lower() in story[1]
+            or keyword.upper() in story[1]
+            or keyword in story[1]
+        ):
             found_list.append(story)
     print(f'We found {len(found_list)} stories matching your keyword: ')
     for story in found_list:
@@ -176,5 +204,6 @@ datatakeover = takeover.get_all_values()
 def main():
     enter_name()
     get_stock_preference()
-    
+
+
 main()
