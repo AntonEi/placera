@@ -9,7 +9,7 @@ def validate_stock_preference(valid_choices):
     """
     option_is_valid = False
     while option_is_valid is False:
-        option = input("Enter your option: ")
+        option = input("Enter your option: \n")
         option_is_valid = option in valid_choices
         if option_is_valid is False:
             print('Please enter a valid option')
@@ -166,7 +166,7 @@ def enter_name():
 
     # Enter name
     while True:
-        user_name = input("Please enter your name: ")
+        user_name = input("Please enter your name: \n")
 
         if user_name.isalpha():
             print(f"Welcome, {user_name}! Let's get you started in finding"
@@ -185,7 +185,7 @@ def get_stock_preference():
     # Choose what category you want.
     while True:
         data_str = input("Please enter your preference"
-                         "(Tech, Medical, or Takeover): ")
+                         "(Tech, Medical, or Takeover):\n")
         if data_str.lower() in ['tech', 'medical', 'takeover']:
             print(f"Thank you for providing your preference:"
                   f" {data_str.capitalize()}\n")

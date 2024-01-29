@@ -95,5 +95,18 @@ If you don't input a valid number, you will receive an error message asking you 
 
 ![Saving keyword](i)
 
+### Exit program 
+- The user has the option to exit the program at any time by pressing [0]. This provides a convenient and straightforward way for users to conclude their session when they no longer wish to use the tool.
+
+![Exit program](i)
 
 
+## Data Model
+
+
+
+
+## testing 
+
+### PEP8 Testing
+The python files have all been passed through
