@@ -22,5 +22,11 @@ The live link can be found here - []()
     - Choose another preference and initiate a new search 
     - End the program if your search requirements are met. 
 
+## Site Owner Goals
 
+- To provide users with an efficient and user-friendly tool for searching key information within press releases.
+- The tool is designed to assist users in staying one step ahead when identifying the next big stock.
+- The tool is aimed at aiding users in effortlessly identifying stocks.
+
+## User Stories
 
