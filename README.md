@@ -109,4 +109,33 @@ If you don't input a valid number, you will receive an error message asking you 
 ## testing 
 
 ### PEP8 Testing
-The python files have all been passed through
+The python files have all been passed through [pep8](https://pep8ci.herokuapp.com/#) All python files were checked with no errors reported. See screen show below: 
+
+![pep8]()
+
+### Input Testing
+
+The name input underwent thorough testing to ensure a robust validation process. Specifically:
+
+- Verified that the user cannot input an empty space and only letters as their name.
+- Preference menu accepts only three valid preferences: Tech, Medical, or Takeover.
+- If an invalid number or letters is input during the Keyword Option or Saving keyword option, the system will generate a clear error message.
+
+
+### Other Program Testing
+The program was tested thoroughly to ensure the following features worked as intended:
+- A user selects their preference between Tech, Medical, or Takeover each time they use the app.
+- The program guides the user through available options within their selected preference.
+- The app validates and handles user input to ensure it matches available choices, providing clear error messages otherwise.
+- The user can explore various keyword options within their chosen preference.
+- The app retrieves and displays relevant stories from a Google Sheet based on the selected keyword.
+- The user has the option to save a keyword to regular searches for future reference.
+- The program ensures that the entered name is valid, consisting only of letters.
+- The app gives appropriate feedback to the user based on their interactions, ensuring clear communication.
+- The terminal provides a smooth and clear experience, with options to exit the program or explore more preferences. 
+- The app integrates with Google Sheets to update information accurately and reflect the user's preferences.
+
+All of the above tests were completed in my local terminal and also in the Heroku terminal.
+
+## Libraries and Technologies Used
+
