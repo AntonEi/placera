@@ -38,7 +38,15 @@ The live link can be found here - []()
     - Decide whether to save the keyword and associated stories in a document for future reference.
     - Have the option to use a new keyword, select another preference, or end the program.
 
+## Logic Flow 
 
+To help plan and understand how the tool works, I created a flow chart using Lucid Chart. 
+
+This chart visually shows the step-by-step process and the different parts of the tool that interact with each other. It was created at the beginning of the project to guide the development.
+
+The goal was to keep things organized and ensure a clear understanding of the tool's structure. Although the flow chart may not cover every detail, it served as a helpful roadmap.
+
+![Flow Chart](')
 
 
 
