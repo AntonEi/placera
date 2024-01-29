@@ -75,4 +75,25 @@ The goal was to keep things organized and ensure a clear understanding of the to
 
 ![Key word option](i)
 
+If you don't input a valid number, you will receive an error message asking you to input a valid option. 
+
+![Key word option](i)
+
+### Keyword Result
+- After selecting the keyword, the program will display relevant PR matching your preference.
+- You can decide whether to save this keyword for regular searches or not. Inputting either "1" for Yes or "2" for No will prompt the next step in the process.
+
+![Keyword Result](i)
+
+If you don't input a valid number, you will receive an error message asking you to input a valid option. 
+
+![Keyword Result](i)
+
+### Saving keyword
+- If the user chooses to save the keyword for regular searches, they can enter [1] for "Yes." The program then updates the document and confirms the action by displaying "Document updated."
+- Following this, the user is prompted to enter another option, and they are reminded that they can press [10] to see the options. This allows users to continue using the program for additional searches or explore other features.
+
+![Saving keyword](i)
+
+
 

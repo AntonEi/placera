@@ -232,7 +232,7 @@ def save_to_regular_search_keywords(keyword):
     If the user chooses to save, the keyword is appended to the regular
     search sheet.
     """
-    print("-----------------------------------------------------")
+    print("--------------------------------------------------------------")
     print('\n Do you want to save this keyword to regular searches? \n')
     print("[1] Yes")
     print("[2] No")
