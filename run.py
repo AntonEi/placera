@@ -2,7 +2,11 @@ import gspread
 from google.oauth2.service_account import Credentials
 
 
+# Function to validate user option
 def validate_stock_preference(valid_choices):
+    """
+    Validates and returns the user's selected option.
+    """
     option_is_valid = False
     while option_is_valid is False:
         option = input("Enter your option: ")
@@ -12,14 +16,18 @@ def validate_stock_preference(valid_choices):
     return int(option)
 
 
+# Function to explore additional options in the Tech category
 def explore_tech_options():
     """
     Explore additional options in the Tech category.
     Display a menu for Tech option, asking the user to choose an option
     """
+    # List of keywords related to Tech options
     keyword_list = ["Partnerships", "Market Expansion", "Product Launch",
                     " Stock Buyback Program", "Supply Chain Updates",
                     " Industry Awards"]
+
+    # Display menu for Tech options
     print("Choose a keyword to explore Tech options:")
     print("[1] Partnerships")
     print("[2] Market Expansion")
@@ -30,7 +38,7 @@ def explore_tech_options():
     print("[10] Back to Category")
     print("[0] Exit program")
 
-    # Option field
+    # Get user's choice
     option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                         '10', '0'])
     if option == 0:
@@ -47,19 +55,25 @@ def explore_tech_options():
             print('Back to Category...\n')
             get_stock_preference()
             break
+
+        # Save selected keyword to regular searches
         save_to_regular_search_keywords(selected_keyword)
         print("Enter another option ...\n ")
         option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                            '10', '0'])
 
 
+# Function to explore additional options in the medical category
 def explore_medical_options():
     """
     Explore additional options in the Medical category.
-    Display a menu for Tech option, asking the user to choose an option
+    Display a menu for medical option, asking the user to choose an option
     """
+    # List of keywords related to medical options
     keyword_list = ["FDA approval", "Fas 1", "Fas 2", "Fas 3",
                     " EMA approval", "Product Launches"]
+
+    # Display menu for medical options
     print("Choose a keyword to explore Medical options:")
     print("[1] FDA approval")
     print("[2] Fas 1")
@@ -70,7 +84,7 @@ def explore_medical_options():
     print("[10] Back to Category")
     print("[0] Exit program")
 
-    # Option field
+    # Get user's choice
     option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                         '10', '0'])
     if option == 0:
@@ -87,19 +101,25 @@ def explore_medical_options():
             print('Back to Category...\n')
             get_stock_preference()
             break
+
+        # Save selected keyword to regular searches
         save_to_regular_search_keywords(selected_keyword)
         print("Enter another option ...\n ")
         option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                            '10', '0'])
 
 
+# Function to explore additional options in the takeover category
 def explore_takeover_options():
     """
     Explore additional options in the Takeover category.
-    Display a menu for Tech option, asking the user to choose an option
+    Display a menu for takeover option, asking the user to choose an option
     """
+    # List of keywords related to takeover options
     keyword_list = ["Merger", "Takeover", "Acquisition", "Letter of Intent",
                     "Buyout", "Hostile Takeover"]
+
+    # Display menu for mtakeover options
     print("Choose a keyword to explore Takeover options:")
     print("[1] Merger")
     print("[2] Takeover")
@@ -110,7 +130,7 @@ def explore_takeover_options():
     print("[10] Back to Category")
     print("[0] Exit program")
 
-    # Option field
+    # Get user's choice
     option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                         '10', '0'])
     if option == 0:
@@ -127,6 +147,8 @@ def explore_takeover_options():
             print('Back to Category...\n')
             get_stock_preference()
             break
+
+        # Save selected keyword to regular searches
         save_to_regular_search_keywords(selected_keyword)
         print("Enter another option ...\n ")
         option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
@@ -134,9 +156,14 @@ def explore_takeover_options():
 
 
 def enter_name():
+    """
+    Welcomes the user to StockTrigger and prompts them to enter their name.
+    Ensures that the entered name contains only letters.
+    """
     # Welcome message
     print("Greetings! You've just stepped into the world of StockTrigger,")
     print("your gateway to discovering your next promising stock.\n")
+
     # Enter name
     while True:
         user_name = input("Please enter your name: ")
@@ -178,30 +205,49 @@ def get_stock_preference():
 
 
 def find_stories_by_keyword(keyword, data_sheet):
+    """
+    Finds stories in a data sheet that match a given keyword.
+    """
     found_list = []
     for story in data_sheet:
+        # Check if the keyword is in the PM text
         if (
             keyword.lower() in story[1]
             or keyword.upper() in story[1]
             or keyword in story[1]
         ):
             found_list.append(story)
+
+    # Print the number of matching stories
     print(f'We found {len(found_list)} stories matching your keyword: ')
+    # Print each matching story
     for story in found_list:
         print(story)
 
 
 def save_to_regular_search_keywords(keyword):
+    """
+    Asks the user if they want to save a keyword to regular searches.
+    If the user chooses to save, the keyword is appended to the regular
+    search sheet.
+    """
     print('\n Do you want to save this keyword to regular searches? \n')
     print("[1] Yes")
     print("[2] No")
+    # Get the user's choice using the validate_stock_preference function
     user_option = validate_stock_preference(['1', '2'])
+    # Check if the user chose to save the keyword
     if user_option == 1:
+        # Append the keyword to the regular search sheet
         regular_search.append_row([keyword])
         print('\n Document updated \n')
 
 
 def main():
+    """
+    The main function that orchestrates the StockTrigger program.
+
+    """
     enter_name()
     get_stock_preference()
 
