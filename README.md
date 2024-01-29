@@ -30,3 +30,15 @@ The live link can be found here - []()
 
 ## User Stories
 
+- ### As a user I want to:
+    - Select a preference (Tech, Medical, or Takeover) to tailor my stock search.
+    - Easily navigate through a menu of keywords associated with my preference.
+    - Receive information on the number of news stories found related to my chosen keyword.
+    - Read the stories in a clear and straightforward text format.
+    - Decide whether to save the keyword and associated stories in a document for future reference.
+    - Have the option to use a new keyword, select another preference, or end the program.
+
+
+
+
+
