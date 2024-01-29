@@ -156,3 +156,16 @@ The text from the Google Sheet doesn't fit within the program's square.
 Attempting to copy the text causes the program to shut down.
 
 ## Fixed bugs 
+
+Add validator to the takeover option function
+
+- Issue: Pressing keys 7-9 at the start of the program led to an unexpected shutdown.
+- Description: Users experienced an issue where pressing any key from 7 to 9 during the program's startup caused an abrupt shutdown.
+- Resolution: The problem was traced to the absence of input validation in the takeover option function. This resulted in the program encountering unexpected input, leading to a shutdown. The addition of a validator to the takeover option function now ensures that only valid inputs are accepted, preventing the program from shutting down unexpectedly when keys 7-9 are pressed.
+
+
+Resolve Loop Exit Issue
+
+- Issue: Delayed Exit on Pressing [0] in Program Loop
+- Description: Users reported an inconvenience during program execution where pressing [0] to exit required multiple attempts. The program was caught in a loop, necessitating users to press [0] more than once to successfully exit.
+- Resolution: Upon further inspection, it was identified that the loop exit condition needed improvement. To address this issue, a 'break' statement was strategically introduced, ensuring a more efficient exit process. With this modification, users can now exit the program promptly with a single press of [0], enhancing the overall usability and responsiveness of the application. The 'break' statement optimizes the loop control, resolving the reported problem and providing a smoother user experience
