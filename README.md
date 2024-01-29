@@ -42,11 +42,37 @@ The live link can be found here - []()
 
 To help plan and understand how the tool works, I created a flow chart using Lucid Chart. 
 
-This chart visually shows the step-by-step process and the different parts of the tool that interact with each other. It was created at the beginning of the project to guide the development.
+This chart visually shows the step-by-step process and the different parts of the tool that interact with each other. It was created at the beginning of the project to guide the development.it does not fully reflect the tool structure.
 
 The goal was to keep things organized and ensure a clear understanding of the tool's structure. Although the flow chart may not cover every detail, it served as a helpful roadmap.
 
-![Flow Chart](')
+![Flow Chart](i)
 
+## Features
+
+### Title and Introduction Section
+- Upon entering the tool, the user is greeted with a simple interface that welcomes them and requests their name.
+![Welcome Screen](i)
+
+- Robust data validation is implemented for the name input. The user is required to enter a name consisting only letters, and not just a blank space.In case of invalid data, a error message saying "Invalid name. Please enter a name containing only letters. Please try again." will show
+
+![Username Validation](i)
+
+### Preference menu
+- The computer will welcome them to the game and repeat their name back to them. 
+- Next, you'll be asked to choose a preference between Tech, Medical, or Takeover. Select the category that aligns with your interest or focus.
+
+![User Menu](i)
+
+- It doesn't matter if their input is lower or upper case. The computer can handle both inputs by using the inbuilt function, lower().
+- If the user does not input Tech, Medical, or Takeover they will get an error message saying "Invalid preference. Please enter Tech, Medical, or Takeover. Please try again." 
+
+![User validator](i)
+
+### Key word option
+- The program will present you with a menu of keywords related to your chosen preference.
+- You can select a keyword from the list to explore relevant information.
+
+![Key word option](i)
 
 
