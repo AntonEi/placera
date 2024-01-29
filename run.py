@@ -1,17 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
 
-SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
-
-CREDS = Credentials.from_service_account_file('creds.json')
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('placera')
-
 
 def validate_stock_preference(valid_choices):
     option_is_valid = False
@@ -29,7 +18,7 @@ def explore_tech_options():
     Display a menu for Tech option, asking the user to choose an option
     """
     keyword_list = ["Partnerships", "Market Expansion", "Product Launch",
-                    " Stock Buyback Program", "Supply Chain  Updates",
+                    " Stock Buyback Program", "Supply Chain Updates",
                     " Industry Awards"]
     print("Choose a keyword to explore Tech options:")
     print("[1] Partnerships")
@@ -58,7 +47,10 @@ def explore_tech_options():
             print('Back to Category...\n')
             get_stock_preference()
             break
-        option = int(input("Enter another option: "))
+        save_to_regular_search_keywords(selected_keyword)
+        print("Enter another option ...\n ")
+        option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
+                                           '10', '0'])
 
 
 def explore_medical_options():
@@ -193,12 +185,14 @@ def find_stories_by_keyword(keyword, data_sheet):
         print(story)
 
 
-tech = SHEET.worksheet('tech')
-datatech = tech.get_all_values()
-medical = SHEET.worksheet('medical')
-datamedical = medical.get_all_values()
-takeover = SHEET.worksheet('takeover')
-datatakeover = takeover.get_all_values()
+def save_to_regular_search_keywords(keyword):
+    print('\n Do you want to save this keyword to regular searches? \n')
+    print("[1] Yes")
+    print("[2] No")
+    user_option = validate_stock_preference(['1', '2'])
+    if user_option == 1:
+        regular_search.append_row([keyword])
+        print('\n Document updated \n')
 
 
 def main():
@@ -206,4 +200,21 @@ def main():
     get_stock_preference()
 
 
-main()
+if __name__ == "__main__":
+    SCOPE = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive.file",
+        "https://www.googleapis.com/auth/drive"
+    ]
+    CREDS = Credentials.from_service_account_file('creds.json')
+    SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+    GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+    SHEET = GSPREAD_CLIENT.open('placera')
+    tech = SHEET.worksheet('tech')
+    datatech = tech.get_all_values()
+    medical = SHEET.worksheet('medical')
+    datamedical = medical.get_all_values()
+    takeover = SHEET.worksheet('takeover')
+    regular_search = SHEET.worksheet('regular_search')
+    datatakeover = takeover.get_all_values()
+    main()
