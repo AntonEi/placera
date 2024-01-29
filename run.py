@@ -58,7 +58,7 @@ def explore_tech_options():
 
         # Save selected keyword to regular searches
         save_to_regular_search_keywords(selected_keyword)
-        print("Enter another option ...\n ")
+        print("\nEnter another option ...\nPress [10] to see the options")
         option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                            '10', '0'])
 
@@ -104,7 +104,7 @@ def explore_medical_options():
 
         # Save selected keyword to regular searches
         save_to_regular_search_keywords(selected_keyword)
-        print("Enter another option ...\n ")
+        print("\nEnter another option ...\nPress [10] to see the options")
         option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                            '10', '0'])
 
@@ -150,7 +150,7 @@ def explore_takeover_options():
 
         # Save selected keyword to regular searches
         save_to_regular_search_keywords(selected_keyword)
-        print("Enter another option ...\n ")
+        print("\nEnter another option ...\nPress [10] to see the options")
         option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
                                            '10', '0'])
 
@@ -219,10 +219,11 @@ def find_stories_by_keyword(keyword, data_sheet):
             found_list.append(story)
 
     # Print the number of matching stories
-    print(f'We found {len(found_list)} stories matching your keyword: ')
+    print(f'\n We found {len(found_list)} stories matching your keyword: ')
+    print("-------------------------------------------------")
     # Print each matching story
     for story in found_list:
-        print(story)
+        print((' ').join(story))
 
 
 def save_to_regular_search_keywords(keyword):
@@ -231,6 +232,7 @@ def save_to_regular_search_keywords(keyword):
     If the user chooses to save, the keyword is appended to the regular
     search sheet.
     """
+    print("-------------------------------------------------")
     print('\n Do you want to save this keyword to regular searches? \n')
     print("[1] Yes")
     print("[2] No")
