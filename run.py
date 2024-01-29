@@ -87,7 +87,10 @@ def explore_medical_options():
             print('Back to Category...\n')
             get_stock_preference()
             break
-        option = int(input("Enter another option: "))
+        save_to_regular_search_keywords(selected_keyword)
+        print("Enter another option ...\n ")
+        option = validate_stock_preference(['1', '2', '3', '4', '5', '6',
+                                           '10', '0'])
 
 
 def explore_takeover_options():
