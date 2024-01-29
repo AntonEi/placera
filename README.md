@@ -139,3 +139,20 @@ All of the above tests were completed in my local terminal and also in the Herok
 
 ## Libraries and Technologies Used
 
+### Python Libraries:
+[Gspread](https://pypi.org/project/gspread/): to allow communication with Google Sheets
+[google.oauth2.service_account](https://google-auth.readthedocs.io/en/stable/index.html):  used to get infomation for the text
+
+### Programs Used
+- [GitHub](https://github.com/) - used for version control.
+- [Heroku](https://dashboard.heroku.com/apps) -  used to deploy the live project.
+- [Lucidchart](https://lucid.app/documents#/dashboard) -  used to create the game flowchart
+- [PEP8 Online](http://pep8online.com/) - used to validate all the Python code
+
+## Known Bugs
+
+The text from the Google Sheet doesn't fit within the program's square. 
+
+Attempting to copy the text causes the program to shut down.
+
+## Fixed bugs 
